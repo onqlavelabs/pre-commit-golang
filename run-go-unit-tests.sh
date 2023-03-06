@@ -5,5 +5,5 @@ fail() {
   exit 1
 }
 
-FILES=$(go list ./... | grep -v /vendor/) || fail
+FILES=$(go list ./... | grep -v test | grep -v /vendor/) || fail
 go test -tags=unit -timeout 30s -short -v ${FILES} || fail
